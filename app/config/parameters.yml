@@ -2,11 +2,12 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: ged
-    database_user: root
-    database_password: nrazLrb7
+    database_name: documents
+    database_user: documents
+    database_password: 1Gorj5~2
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     secret: 7b4b9736e9893fd3f04cb3640289fbd7819aa42e
+

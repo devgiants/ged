@@ -1,11 +1,14 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
+
+load "config/deploy/tasks/database.rb"
+
 set :application, 'ged'
 set :repo_url, 'git.devgiants:devgiants/ged.git'
 
 set :ssh_user, 'nbonniot'
-server 'devgiants', user: fetch(:ssh_user), roles: %w{web app db}
+server 'devgiants', user: fetch(:ssh_user), roles: %w{web app db}, :primary => true
 
 set :scm, :git
 
@@ -15,13 +18,18 @@ set :log_level, :info
 
 set :composer_install_flags, '--prefer-dist --no-interaction --optimize-autoloader'
 
-# set :linked_files, %w{app/config/parameters.yml}
+# Name used by the Web Server (i.e. www-data for Apache)
+set :file_permissions_users, ['psacln']
+
+# Name used by the Web Server (i.e. www-data for Apache)
+set :webserver_user,        "nbonniot"
+
+set :linked_files, %w{app/config/parameters.yml}
 set :linked_dirs, %w{app/logs web/uploads vendor}
 
 set :keep_releases, 3
 
 after 'deploy:finishing', 'deploy:cleanup'
-
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
