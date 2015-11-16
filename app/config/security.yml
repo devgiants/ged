@@ -1,11 +1,19 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    #providers:
+    #    in_memory:
+    #        memory: ~
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,7 +22,7 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            #anonymous: ~
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -22,3 +30,28 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                check_path: fos_user_security_check
+                login_path: fos_user_security_login
+
+            logout:       true
+            anonymous:    true
+
+        login:
+            pattern: ^/login$
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager
+                check_path: fos_user_security_check
+                login_path: fos_user_security_login
+
+
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: ROLE_USER }
+        #- { path: ^/admin/, role: ROLE_ADMIN }
