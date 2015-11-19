@@ -4,7 +4,11 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets '@AppBundle/Resources/public/css/*' filter='cssrewrite' %}
+            {% stylesheets
+                '@AppBundle/Resources/public/css/*'
+                '../app/Resources/public/css/*'
+                filter='cssrewrite'
+            %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
@@ -15,7 +19,10 @@
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}
-            {% javascripts '@AppBundle/Resources/public/js/*' %}
+            {% javascripts
+                'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'
+                '@AppBundle/Resources/public/js/*'
+            %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
