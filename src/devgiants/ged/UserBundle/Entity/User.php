@@ -6,7 +6,7 @@
  * Time: 09:16
  */
 
-namespace AppBundle\Entity;
+namespace devgiants\ged\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
