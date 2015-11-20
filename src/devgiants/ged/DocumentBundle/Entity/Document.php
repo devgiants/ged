@@ -2,6 +2,7 @@
 
 namespace devgiants\ged\DocumentBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Document
 {
     /**
-     * @var integer
+     * @var integer the internal ID, but represents also the number provided by the system to retrieve file on paper storage
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,20 +23,21 @@ class Document
     private $id;
 
     /**
-     * @var string
+     * @var string the document name/title
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
-     * @var string
+     * @var string the document description
      *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
+     * var ArrayCollection[File] all media files linked to this document
      * @ORM\OneToMany(targetEntity="File", mappedBy="document", cascade={"persist"})
      */
     protected $files;
@@ -102,7 +104,7 @@ class Document
      */
     public function __construct()
     {
-        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->files = new ArrayCollection();
     }
 
     /**
@@ -112,7 +114,7 @@ class Document
      *
      * @return Document
      */
-    public function addFile(\devgiants\ged\DocumentBundle\Entity\File $file)
+    public function addFile(File $file)
     {
         $this->files[] = $file;
 
@@ -124,7 +126,7 @@ class Document
      *
      * @param \devgiants\ged\DocumentBundle\Entity\File $file
      */
-    public function removeFile(\devgiants\ged\DocumentBundle\Entity\File $file)
+    public function removeFile(File $file)
     {
         $this->files->removeElement($file);
     }

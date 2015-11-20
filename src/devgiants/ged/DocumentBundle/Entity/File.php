@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class File
 {
     /**
-     * @var integer
+     * @var integer the internal File ID
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,21 +22,21 @@ class File
     private $id;
 
     /**
-     * @var string
+     * @var string the relative URL to file
      *
-     * @ORM\Column(name="pathToFile", type="string", length=255)
+     * @ORM\Column(name="urlToFile", type="string", length=255)
      */
-    private $pathToFile;
+    private $urlToFile;
 
     /**
-     * @var string
+     * @var string the relative URL to file thumbnail
      *
-     * @ORM\Column(name="pathToThumbnail", type="string", length=255)
+     * @ORM\Column(name="urlToThumbnail", type="string", length=255)
      */
-    private $pathToThumbnail;
+    private $urlToThumbnail;
 
     /**
-     * @var Document
+     * @var Document the document linked to this file
      *
      * @ORM\ManyToOne(targetEntity="Document", inversedBy="files", cascade={"persist"})
      */
@@ -56,13 +56,13 @@ class File
     /**
      * Set pathToFile
      *
-     * @param string $pathToFile
+     * @param string $urlToFile
      *
      * @return File
      */
-    public function setPathToFile($pathToFile)
+    public function setUrlToFile($urlToFile)
     {
-        $this->pathToFile = $pathToFile;
+        $this->urlToFile = $urlToFile;
 
         return $this;
     }
@@ -72,21 +72,21 @@ class File
      *
      * @return string
      */
-    public function getPathToFile()
+    public function getUrlToFile()
     {
-        return $this->pathToFile;
+        return $this->urlToFile;
     }
 
     /**
      * Set pathToThumbnail
      *
-     * @param string $pathToThumbnail
+     * @param string $urlToThumbnail
      *
      * @return File
      */
-    public function setPathToThumbnail($pathToThumbnail)
+    public function setUrlToThumbnail($urlToThumbnail)
     {
-        $this->pathToThumbnail = $pathToThumbnail;
+        $this->urlToThumbnail = $urlToThumbnail;
 
         return $this;
     }
@@ -96,9 +96,9 @@ class File
      *
      * @return string
      */
-    public function getPathToThumbnail()
+    public function getUrlToThumbnail()
     {
-        return $this->pathToThumbnail;
+        return $this->urlToThumbnail;
     }
 
     /**
