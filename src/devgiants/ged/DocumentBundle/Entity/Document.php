@@ -2,6 +2,7 @@
 
 namespace devgiants\ged\DocumentBundle\Entity;
 
+use devgiants\ged\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -48,6 +49,11 @@ class Document
      */
     private $tags;
 
+    /**
+     * @var devgiants\ged\UserBundle\Entity\User document owner
+     * @ORM\ManyToOne(targetEntity="devgiants\ged\UserBundle\Entity\User", inversedBy="documents", cascade={"persist"})
+     */
+    private $user;
 
     /**
      * Get id
@@ -164,4 +170,19 @@ class Document
         $this->tags = $tags;
     }
 
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 }
