@@ -17,8 +17,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     {#<li class="active"><a href="#">Ajouter <span class="sr-only">(current)</span></a></li>#}
-                    <li><a href="#">Ajouter</a></li>
-                    <li><a href="#">Rechercher</a></li>
+                    <li {% if app.request.get('_route') == 'devgiants_ged_document_add' %}class="active"{% endif %}>
+                        <a href="{{ path('devgiants_ged_document_add') }}">Ajouter</a>
+                    </li>
+                    <li {% if app.request.get('_route') == 'devgiants_ged_document_search' %}class="active"{% endif %}>
+                        <a href="{{ path("devgiants_ged_document_search") }}">Rechercher</a>
+                    </li>
                     {#<li class="dropdown">#}
                     {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>#}
                     {#<ul class="dropdown-menu">#}
@@ -33,6 +37,9 @@
                     {#</li>#}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <p class="text-right">Bienvenue, {{ app.user.username }}</p>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> <span class="caret"></span></a>
                         <ul class="dropdown-menu">

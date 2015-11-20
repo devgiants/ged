@@ -1,10 +1,10 @@
-dev_giants_ged_document:
+devgiants_ged_document:
     resource: "@devGiantsGedDocumentBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /document
 
-dev_giants_ged_user:
+devgiants_ged_user:
     resource: "@devGiantsGedUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
 app:
     resource: "@AppBundle/Controller/"

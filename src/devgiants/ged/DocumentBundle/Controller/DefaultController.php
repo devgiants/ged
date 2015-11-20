@@ -6,8 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function addDocumentsAction()
     {
-        return $this->render('devGiantsGedDocumentBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('devGiantsGedDocumentBundle:Default:add.html.twig',
+            array()
+        );
+    }
+
+    public function searchDocumentsAction()
+    {
+        return $this->render('devGiantsGedDocumentBundle:Default:search.html.twig',
+            array()
+        );
     }
 }

@@ -1,3 +1,7 @@
-dev_giants_ged_document_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: devGiantsGedDocumentBundle:Default:index }
+devgiants_ged_document_add:
+    path:     /add
+    defaults: { _controller: devGiantsGedDocumentBundle:Default:addDocuments }
+
+devgiants_ged_document_search:
+    path:     /search
+    defaults: { _controller: devGiantsGedDocumentBundle:Default:searchDocuments }

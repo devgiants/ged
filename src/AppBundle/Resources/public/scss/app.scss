@@ -37,12 +37,23 @@
 */
 .navbar {
   .navbar-brand {
-    background: transparent url(../images/ged.png) center center no-repeat;
+    background: transparent url(../images/ged.jpg) center center no-repeat;
     background-size: contain;
     min-width: 50px;
   }
 }
 
+@media (min-width: 768px) {
+  .navbar {
+    .navbar-nav {
+      >li>p {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: 0;
+      }
+    }
+  }
+}
 
 /**********************************************************************
 * Login
