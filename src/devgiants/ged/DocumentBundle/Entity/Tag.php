@@ -2,6 +2,7 @@
 
 namespace devgiants\ged\DocumentBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag
 {
     /**
-     * @var integer
+     * @var integer tag internal ID
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,12 +23,18 @@ class Tag
     private $id;
 
     /**
-     * @var string
+     * @var string the tag name
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
+    /**
+     * @var ArrayCollection[Document] all documents linked to this tag
+     *
+     * @ORM\ManyToMany(targetEntity="Document", mappedBy="tags", cascade={"persist"})
+     */
+    private $documents;
 
     /**
      * Get id
@@ -61,5 +68,21 @@ class Tag
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
+    }
+
+    /**
+     * @param ArrayCollection $documents
+     */
+    public function setDocuments($documents)
+    {
+        $this->documents = $documents;
     }
 }

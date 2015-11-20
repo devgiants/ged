@@ -40,7 +40,14 @@ class Document
      * var ArrayCollection[File] all media files linked to this document
      * @ORM\OneToMany(targetEntity="File", mappedBy="document", cascade={"persist"})
      */
-    protected $files;
+    private $files;
+
+    /**
+     * @var ArrayCollection[Tag] all tags linked to this document
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="document", cascade={"persist"})
+     */
+    private $tags;
+
 
     /**
      * Get id
@@ -140,4 +147,21 @@ class Document
     {
         return $this->files;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param ArrayCollection $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
 }
