@@ -1,0 +1,2 @@
+parameters:
+  document.upload_dir: "medias"

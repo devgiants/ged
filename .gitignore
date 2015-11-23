@@ -11,5 +11,6 @@
 /web/bundles/
 .idea/
 **.css
+/app/media
 **.css.map
 *~

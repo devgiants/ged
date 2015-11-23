@@ -24,5 +24,8 @@ class devGiantsGedDocumentExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        // Load bundles parameters
+        $loader->load('parameters.yml');
     }
 }
