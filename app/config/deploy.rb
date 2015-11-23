@@ -29,6 +29,9 @@ set :linked_dirs, %w{app/logs web/uploads vendor}
 
 set :keep_releases, 3
 
+after 'deploy:updated',   'symfony:assetic:dump'
+after 'deploy:updated',   'symfony:assets:install'
+
 after 'deploy:finishing', 'deploy:cleanup'
 
 # Default branch is :master
