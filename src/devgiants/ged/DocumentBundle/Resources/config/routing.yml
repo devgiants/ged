@@ -6,6 +6,10 @@ devgiants_ged_document_upload:
     path:     /upload/{fileName}
     defaults: { _controller: devGiantsGedDocumentBundle:Upload:UploadDocument }
 
+devgiants_ged_document_upload_progress:
+    path:     /progress
+    defaults: { _controller: devGiantsGedDocumentBundle:Upload:ProgressDocumentUpload }
+
 devgiants_ged_document_search:
     path:     /search
     defaults: { _controller: devGiantsGedDocumentBundle:Default:searchDocuments }

@@ -11,17 +11,22 @@ window.onload = function() {
         progressBar = document.getElementById('progressBar'),
         progressOuter = document.getElementById('progressOuter'),
         msgBox = document.getElementById('msgBox');
+        loaderImg = document.getElementById('loaderImg');
+
     var uploader = new ss.SimpleUpload({
         button: btn,
         url: '/document/upload/', // server side handler
-        progressUrl: 'uploadProgress.php', // enables cross-browser progress support (more info below)
+        sessionProgressUrl: '/document/upload/progress/', // enables cross-browser progress support (more info below)
         responseType: 'json',
         name: 'fileName',
         multiple: true,
+        multipart: true,
+        queue: false,
         allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf', 'zip'], // for example, if we were uploading pics
         hoverClass: 'ui-state-hover',
         focusClass: 'ui-state-focus',
         disabledClass: 'ui-state-disabled',
+        debug: true,
         onSubmit: function(filename, extension) {
             // Create the elements of our progress bar
             var progress = document.createElement('div'), // container for progress bar
@@ -58,6 +63,6 @@ window.onload = function() {
                 return false;
             }
             // Stuff to do after finishing an upload...
-        }
+        },
     });
 };
