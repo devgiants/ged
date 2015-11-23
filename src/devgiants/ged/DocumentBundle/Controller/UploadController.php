@@ -18,8 +18,12 @@ class UploadController extends Controller
     {
         $uploadHandler = $this->get('devgiants.ged.document.upload');
         $uploadHandler->setFileInfo($fileName);
+        $year = date('Y');
+        $month = date('m');
+        $day = date('d');
+        $uploadDir = "{$this->get('kernel')->getRootDir()}/media/{$year}/{$month}/{$day}/";
 
-        $result = $uploadHandler->handleUpload("{$this->get('kernel')->getRootDir()}/media/");
+        $result = $uploadHandler->handleUpload($uploadDir);
 
         if (!$result) {
             $return = array('success' => false, 'msg' => $uploadHandler->getErrorMsg());

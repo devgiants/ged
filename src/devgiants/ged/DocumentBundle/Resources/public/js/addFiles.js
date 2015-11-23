@@ -18,7 +18,7 @@ window.onload = function() {
         responseType: 'json',
         name: 'fileName',
         multiple: true,
-        allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'], // for example, if we were uploading pics
+        allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf', 'zip'], // for example, if we were uploading pics
         hoverClass: 'ui-state-hover',
         focusClass: 'ui-state-focus',
         disabledClass: 'ui-state-disabled',

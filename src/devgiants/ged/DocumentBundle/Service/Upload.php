@@ -246,7 +246,12 @@ class Upload
         $slash = DIRECTORY_SEPARATOR;
         $dir = str_replace('/', $slash, $dir);
         $dir = str_replace('\\', $slash, $dir);
-        return substr($dir, -1) == $slash ? $dir : $dir . $slash;
+        $finalDir = substr($dir, -1) == $slash ? $dir : $dir . $slash;
+
+        if(!file_exists($finalDir))
+            mkdir($finalDir, 0775, true);
+
+        return $finalDir;
     }
 
     // escapeJS and jsMatcher are adapted from the Escaper component of
