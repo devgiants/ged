@@ -21,7 +21,8 @@ window.onload = function() {
         name: 'fileName',
         multiple: true,
         multipart: true,
-        queue: false,
+        maxUploads : 100,
+        queue: true,
         allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf', 'zip'], // for example, if we were uploading pics
         hoverClass: 'ui-state-hover',
         focusClass: 'ui-state-focus',
