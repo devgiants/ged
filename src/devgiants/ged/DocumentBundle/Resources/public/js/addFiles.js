@@ -36,8 +36,9 @@ window.onload = function() {
                 progressBox = document.getElementById('progressBox'); // on page container for progress bars
 
             // Assign each element its corresponding class
-            progress.className = 'progress';
-            bar.className = 'bar';
+            progress.className = 'progress progress-striped active';
+            bar.className = 'progress-bar progress-bar-success';
+            bar.role = "progressbar"
             fileSize.className = 'size';
             wrapper.className = 'wrapper';
 
