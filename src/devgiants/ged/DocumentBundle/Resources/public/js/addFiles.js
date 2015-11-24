@@ -16,7 +16,7 @@ window.onload = function() {
     var uploader = new ss.SimpleUpload({
         button: btn,
         url: '/document/upload/', // server side handler
-        sessionProgressUrl: '/document/upload/progress/', // enables cross-browser progress support (more info below)
+        sessionProgressUrl: '/document/progress/', // enables cross-browser progress support (more info below)
         responseType: 'json',
         name: 'fileName',
         multiple: true,

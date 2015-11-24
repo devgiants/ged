@@ -1502,7 +1502,7 @@ ss.XhrUpload = {
         }
 
         ss.addEvent( xhr.upload, 'progress', function( event ) {
-            if ( event.lengthComputable ) {
+            //if ( event.lengthComputable ) {
                 var pct = Math.round( ( event.loaded / event.total ) * 100 );
 
                 opts.onProgress.call( self, pct );
@@ -1514,7 +1514,7 @@ ss.XhrUpload = {
                 if ( progBar ) {
                     progBar.style.width = pct + '%';
                 }
-            }
+            //}
         });
 
         if ( opts.multipart === true ) {
